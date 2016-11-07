@@ -1,4 +1,4 @@
-/* Author: Panu Ranta, panu.ranta@iki.fi, http://14142.net/mml/ */
+/* Author: Panu Ranta, panu.ranta@iki.fi, https://github.com/panur/MML */
 
 'use strict';
 
