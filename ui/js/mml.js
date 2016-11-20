@@ -42,6 +42,10 @@ function main() {
     map.addControl(L.control.zoom({'position': 'bottomright'}));
     L.control.layers(baseLayers, null, {'position': 'topleft'}).addTo(map);
 
+    if ('geolocation' in navigator) {
+        createOwnLocationControl(map);
+    }
+
     function getMmlBaseLayer(layerType, shortName) {
         var licenceUrl = 'http://www.maanmittauslaitos.fi/avoindata_lisenssi_versio1_20120501';
         var urlTemplate = 'http://avoindata.maanmittauslaitos.fi/mapcache/wmts/1.0.0/{layerType}' +
