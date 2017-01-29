@@ -3,12 +3,12 @@
 Linkable and lightweight map with data provided by [Maanmittauslaitos](http://www.maanmittauslaitos.fi/) (National
 Land Survey of Finland).
 
-Example: http://14142.net/mml/
+Example: https://14142.net/mml/
 
 # How
 
-Maanmittauslaitos publishes some of its mapping data as 
-[open data](http://www.maanmittauslaitos.fi/aineistot-palvelut/rajapintapalvelut/paikkatiedon-palvelualustan-pilotti). 
+Maanmittauslaitos publishes some of its mapping data as
+[open data](http://www.maanmittauslaitos.fi/aineistot-palvelut/rajapintapalvelut/paikkatiedon-palvelualustan-pilotti).
 Particularly data provided by Web Map Tile Service (WMTS) is utilised using the following external JavaScript libraries:
 
 * https://github.com/Leaflet/Leaflet
@@ -17,8 +17,8 @@ Particularly data provided by Web Map Tile Service (WMTS) is utilised using the 
 
 # Why
 
-Because Maanmittauslaitos refuces to make its map products 
-([Karttapaikka](https://asiointi.maanmittauslaitos.fi/karttapaikka) and 
+Because Maanmittauslaitos refuces to make its map products
+([Karttapaikka](https://asiointi.maanmittauslaitos.fi/karttapaikka) and
 [Karttaikkuna - Paikkatietoikkuna](http://www.paikkatietoikkuna.fi/web/fi/kartta))
 linkable with any other coordinates than ETRS-TM35FIN.
 
