@@ -59,11 +59,11 @@ function main() {
     }
 
     function getOsmBaseLayer(shortName) {
-        return L.tileLayer('http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+        return L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
             'customOptions': {'shortName': shortName, 'zoomOffset': 0},
             'maxZoom': 19,
             'attribution':
-                '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
+                '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>'
         });
     }
 
@@ -82,7 +82,7 @@ function main() {
     function getMmlCrs() {
         // http://avoindata.maanmittauslaitos.fi/mapcache/wmts?service=wmts&request=getcapabilities&version=1.0.0
         var origin = [-548576, 8388608];
-        // http://epsg.io/3067
+        // https://epsg.io/3067
         var proj4 = '+proj=utm +zone=35 +ellps=GRS80 +towgs84=0,0,0,0,0,0,0 +units=m +no_defs';
         return new L.Proj.CRS('EPSG:3067', proj4, {
             'resolutions': [8192, 4096, 2048, 1024, 512, 256, 128, 64, 32, 16, 8, 4, 2, 1],
