@@ -47,9 +47,9 @@ function main() {
     }
 
     function getMmlBaseLayer(layerType, shortName) {
-        var licenceUrl = 'http://www.maanmittauslaitos.fi/avoindata_lisenssi_versio1_20120501';
-        var urlTemplate = 'http://avoindata.maanmittauslaitos.fi/mapcache/wmts/1.0.0/{layerType}' +
-            '/default/ETRS-TM35FIN/{z}/{y}/{x}.png';
+        var licenceUrl = 'https://www.maanmittauslaitos.fi/avoindata-lisenssi-cc40';
+        var urlTemplate = 'https://avoin-karttakuva.maanmittauslaitos.fi/avoin/wmts/1.0.0/' +
+            '{layerType}/default/ETRS-TM35FIN/{z}/{y}/{x}.png';
         return L.tileLayer(urlTemplate, {
             'customOptions': {'shortName': shortName, 'zoomOffset': 3},
             'layerType': layerType,
@@ -80,7 +80,7 @@ function main() {
     }
 
     function getMmlCrs() {
-        // http://avoindata.maanmittauslaitos.fi/mapcache/wmts?service=wmts&request=getcapabilities&version=1.0.0
+        // https://avoin-karttakuva.maanmittauslaitos.fi/avoin/wmts/1.0.0/WMTSCapabilities.xml
         var origin = [-548576, 8388608];
         // https://epsg.io/3067
         var proj4 = '+proj=utm +zone=35 +ellps=GRS80 +towgs84=0,0,0,0,0,0,0 +units=m +no_defs';
