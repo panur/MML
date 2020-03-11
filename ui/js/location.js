@@ -64,7 +64,7 @@ function createOwnLocationControl(map) {
     function addLocationControl(contentElement) {
         var CustomControl = L.Control.extend({
             options: {
-                position: 'topright'
+                'position': 'topright'
             },
             onAdd: function () {
                 var wrapperElement = document.createElement('div');

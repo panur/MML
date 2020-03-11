@@ -18,7 +18,7 @@ function main() {
         'layers': [getBaseLayer(mapParams['l'])]
     });
 
-    map.on('baselayerchange', function(event) {
+    map.on('baselayerchange', function (event) {
         // https://github.com/Leaflet/Leaflet/issues/2553
         var oldCenter = map.getCenter();
         var oldZoom = map.getZoom() + getZoomOffset(mapParams['l']);
@@ -35,7 +35,7 @@ function main() {
         updatePermalink();
     });
 
-    map.on('moveend', function() {
+    map.on('moveend', function () {
         updatePermalink();
     });
 
