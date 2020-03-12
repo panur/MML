@@ -30,8 +30,10 @@ function main() {
             }
         }
         mapParams['l'] = baseLayers[event.name]['options']['customOptions']['shortName'];
-        map.setView(oldCenter, limitZoom(oldZoom, mapParams['l']) - getZoomOffset(mapParams['l']),
-                    {'reset': true});
+        var maxZoom = getMaxZoom(mapParams['l']) - getZoomOffset(mapParams['l']);
+        map.setMaxZoom(maxZoom);
+        var newZoom = limitZoom(oldZoom, mapParams['l']) - getZoomOffset(mapParams['l']);
+        map.setView(oldCenter, newZoom, {'animate': false});
         updatePermalink();
     });
 
@@ -53,7 +55,7 @@ function main() {
         return L.tileLayer(urlTemplate, {
             'customOptions': {'shortName': shortName, 'zoomOffset': 3},
             'layerType': layerType,
-            'maxZoom': 13,
+            'maxZoom': 16,
             'attribution': '&copy; <a href="' + licenceUrl + '">MML</a>'
         });
     }
@@ -73,6 +75,10 @@ function main() {
                 return baseLayers[baseLayerName];
             }
         }
+    }
+
+    function getMaxZoom(layerShortName) {
+        return getBaseLayer(layerShortName)['options']['maxZoom'];
     }
 
     function getZoomOffset(layerShortName) {
