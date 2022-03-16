@@ -4,6 +4,7 @@
 
 function createOwnLocationControl(map) {
     var ownLocation = null;
+    var watchPositionId = null;
     var controlElement = createControlElement();
     addLocationControl(controlElement);
 
@@ -19,15 +20,20 @@ function createOwnLocationControl(map) {
         return newControlElement;
 
         function onClick() {
-            newControlElement.removeEventListener('click', onClick, false);
-            if (ownLocation !== null) {
-                map.removeLayer(ownLocation);
+            if (watchPositionId === null) {
+                newControlElement.removeEventListener('click', onClick, false);
+                newControlElement.className = 'findingOwnLocation';
+                newControlElement.title = 'finding own location';
+                newControlElement.textContent = '(\u25CE)';
+                watchPositionId = navigator.geolocation.watchPosition(onPositionSuccess,
+                                                                      onPositionError,
+                                                                      {'timeout': 60000});
+            } else {
+                navigator.geolocation.clearWatch(watchPositionId);
+                watchPositionId = null;
+                clearOwnLocation();
+                updateControlElement();
             }
-            newControlElement.className = 'findingOwnLocation';
-            newControlElement.title = 'finding own location';
-            newControlElement.textContent = '(\u25CE)';
-            navigator.geolocation.getCurrentPosition(onPositionSuccess, onPositionError,
-                                                     {'timeout': 20000});
         }
     }
 
@@ -42,10 +48,18 @@ function createOwnLocationControl(map) {
             'fillOpacity': 0.05,
             'clickable': false
         };
+        clearOwnLocation();
         ownLocation =
             L.circle([position.coords.latitude, position.coords.longitude], radius, pathOptions);
         ownLocation.addTo(map);
         map.fitBounds(ownLocation.getBounds(), {'maxZoom': 16});
+    }
+
+    function clearOwnLocation() {
+        if (ownLocation !== null) {
+            map.removeLayer(ownLocation);
+            ownLocation = null;
+        }
     }
 
     function onPositionError(err) {
